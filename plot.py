@@ -75,7 +75,7 @@ if __name__ == '__main__':
     x_train = x_train[..., tf.newaxis].astype("float32")
     x_test = x_test[..., tf.newaxis].astype("float32")
 
-    checkpoint_path = "checkpoints/model_nosample"
+    checkpoint_path = "checkpoints/model"
 
     model = tf.keras.models.load_model(checkpoint_path)
 

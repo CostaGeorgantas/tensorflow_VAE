@@ -6,7 +6,7 @@ if __name__ == '__main__':
     (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
     x_train, x_test = x_train / 255.0, x_test / 255.0
     
-    checkpoint_path = "checkpoints/model_noreg"
+    checkpoint_path = "checkpoints/model"
 
     # Create a callback that saves the model's weights
     cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path, verbose=1, monitor='loss') # saving only weights does not work when loading back

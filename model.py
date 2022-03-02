@@ -46,7 +46,7 @@ def vae_loss(x, x_hat, mu, var):
     kl_loss = tf.math.reduce_sum(kl_loss)
     recon_loss = tf.keras.metrics.binary_crossentropy(x, x_hat)
     recon_loss = tf.math.reduce_sum(recon_loss)
-    return recon_loss
+    return recon_loss + kl_loss
 
 
 class VAE(Model):
@@ -76,5 +76,5 @@ class VAE(Model):
             mu, logvar = self.encoder(x)
             var = tf.exp(logvar)
             z = self.sample(mu, var)
-            x_hat = self.decoder(mu)
+            x_hat = self.decoder(z)
             return x_hat
